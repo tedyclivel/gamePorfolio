@@ -14,26 +14,24 @@ const Projects = () => {
   return (
     <>
       {/* update site title */}
-      <PageTitle title={`${SITE_NAME} | Projects`} />
+      <PageTitle title={`${SITE_NAME} | Projets`} />
 
       {/* projects section */}
       <section className="max-container">
         {/* projects head */}
         <h1 className="head-text">
-          My{" "}
+          Mes{" "}
           <span className="blue-gradient_text font-semibold drop-shadow-sm">
-            Projects
+            projets
           </span>
         </h1>
 
         {/* projects text */}
         <div className="mt-5 flex flex-col gap-3 text-slate-500">
           <p>
-            I&apos;ve embarked on numerous projects throughout the years, but
-            these are the ones I hold closest to my heart. Many of them are
-            open-source, so if you come across something that piques your
-            interest, feel free to explore the codebase and contribute your
-            ideas for further enhancements. Your collaboration is highly valued!
+            Une sélection de projets front-end centrés sur des interfaces
+            modernes, l&apos;expérience utilisateur, l&apos;intégration d&apos;API et les
+            performances web.
           </p>
         </div>
 
@@ -71,25 +69,27 @@ const Projects = () => {
                 <p className="mt-2 text-slate-500">{project.description}</p>
 
                 {/* project link */}
-                <div className="mt-5 flex items-center gap-2 font-poppins">
-                  {/* live link */}
-                  <Link
-                    to={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-semibold text-blue-600"
-                    title="Live Site Link"
-                  >
-                    Live Link
-                  </Link>
+                {project.link && (
+                  <div className="mt-5 flex items-center gap-2 font-poppins">
+                    {/* project link */}
+                    <Link
+                      to={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-semibold text-blue-600"
+                      title="Voir le projet"
+                    >
+                      Voir le projet
+                    </Link>
 
-                  {/* right arrow */}
-                  <img
-                    src={arrow}
-                    alt="Arrow"
-                    className="w-4 h-4 object-contain"
-                  />
-                </div>
+                    {/* right arrow */}
+                    <img
+                      src={arrow}
+                    alt="Flèche"
+                      className="w-4 h-4 object-contain"
+                    />
+                  </div>
+                )}
               </div>
             </div>
           ))}

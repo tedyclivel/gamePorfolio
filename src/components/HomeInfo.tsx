@@ -34,30 +34,30 @@ const InfoBox = ({ text, link, btnText }: InfoBoxProps) => (
 const renderContent: Record<HomeStage, ReactNode> = {
   1: (
     <h1 className="sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5">
-      Hi, I am <span className="font-semibold">{SITE_NAME}</span>
+      Bonjour, je suis <span className="font-semibold">{SITE_NAME}</span>
       👋
-      <br />A Software Engineer from Cameroon.
+      <br />Développeur logiciel au Cameroun.
     </h1>
   ),
   2: (
     <InfoBox
-      text="Worked with many companies and picked up many skills along the way."
+      text="Mes expériences m’ont permis de développer de nombreuses compétences."
       link="/about"
-      btnText="Learn more"
+      btnText="En savoir plus"
     />
   ),
   3: (
     <InfoBox
-      text="Led multiple projects to success over the years. Curious about the impact?"
+      text="Découvrez les projets qui reflètent mon parcours et mes compétences."
       link="/projects"
-      btnText="Visit my portfolio"
+      btnText="Voir mes projets"
     />
   ),
   4: (
     <InfoBox
-      text="Need a project or looking for a dev? I'm just a few keystrokes away."
+      text="Vous avez un projet ou recherchez un développeur ? Échangeons."
       link="/contact"
-      btnText="Let's talk"
+      btnText="Me contacter"
     />
   ),
 };

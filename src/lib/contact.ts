@@ -13,9 +13,9 @@ export type ContactFormFields = {
 };
 
 export type ContactFormError =
-  | "Invalid Name"
-  | "Invalid E-mail"
-  | "Invalid Message";
+  | "Nom invalide"
+  | "E-mail invalide"
+  | "Message invalide";
 
 export const isValidContactName = (name: string): boolean => {
   const trimmed = name.trim();
@@ -38,15 +38,15 @@ export const validateContactForm = ({
   message,
 }: ContactFormFields): ContactFormError | null => {
   if (!isValidContactName(name)) {
-    return "Invalid Name";
+    return "Nom invalide";
   }
 
   if (!isValidContactEmail(email)) {
-    return "Invalid E-mail";
+    return "E-mail invalide";
   }
 
   if (!isValidContactMessage(message)) {
-    return "Invalid Message";
+    return "Message invalide";
   }
 
   return null;

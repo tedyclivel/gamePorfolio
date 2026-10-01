@@ -156,11 +156,11 @@ const Home = () => {
         {/* Sound On/Off toggle button */}
         <aside
           className="absolute bottom-2 left-2"
-          title={isPlayingMusic ? "Sound On" : "Sound Off"}
+          title={isPlayingMusic ? "Son activé" : "Son désactivé"}
         >
           <img
             src={isPlayingMusic ? soundon : soundoff}
-            alt={isPlayingMusic ? "Sound On" : "Sound Off"}
+            alt={isPlayingMusic ? "Son activé" : "Son désactivé"}
             className="w-10 h-10 cursor-pointer object-contain"
             onClick={() => setIsPlayingMusic(!isPlayingMusic)}
           />

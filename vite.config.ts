@@ -26,9 +26,9 @@ export default defineConfig(({ mode }) => {
           navigateFallbackDenylist: [/^\/api\//],
         },
         manifest: {
-          name: "Tedy Clivel - 3D Portfolio",
+          name: "Tedy Clivel - Portfolio 3D",
           short_name: "Tedy Clivel",
-          description: "Amazing 3D Portfolio in React using Three.js",
+          description: "Portfolio 3D de Tedy Clivel créé avec React et Three.js",
           icons: [
             {
               src: "/android-chrome-192x192.png",

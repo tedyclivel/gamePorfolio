@@ -16,13 +16,13 @@ const About = () => {
   return (
     <>
       {/* update site title */}
-      <PageTitle title={`${SITE_NAME} | About me`} />
+      <PageTitle title={`${SITE_NAME} | À propos`} />
 
       {/* about section */}
       <section className="max-container">
         {/* about head */}
         <h1 className="head-text">
-          Hello, I&apos;m{" "}
+          Bonjour, je suis{" "}
           <span className="blue-gradient_text font-semibold drop-shadow-sm">
             {SITE_NAME}
           </span>
@@ -31,15 +31,16 @@ const About = () => {
         {/* about text */}
         <div className="mt-5 flex flex-col gap-3 text-slate-500">
           <p>
-            Software Engineer based in Cameroon, specializing in technical
-            education throught hands-on learning and building applications.
+            Développeur Front-End basé au Cameroun, je crée des interfaces
+            modernes, responsives et performantes avec React.js, Next.js,
+            AngularJS, Three.js, JavaScript et TypeScript.
           </p>
         </div>
 
         {/* about skills */}
         <div className="py-10 flex flex-col">
           {/* skills head */}
-          <h3 className="subhead-text">My Skills</h3>
+          <h3 className="subhead-text">Mes compétences</h3>
 
           {/* skills list */}
           <div className="mt-16 flex flex-wrap gap-12">
@@ -70,13 +71,14 @@ const About = () => {
         {/* work experience */}
         <div className="py-16">
           {/* experience head */}
-          <h3 className="subhead-text">Work Experience</h3>
+          <h3 className="subhead-text">Expérience professionnelle</h3>
 
           {/* experience text */}
           <div className="mt-5 flex flex-col gap-3 text-slate-500">
             <p>
-              I&apos;ve worked with all sorts of companies, leveling up my
-              skills and teaming up with smart people. Here&apos;s the rundown:
+              Mes expériences m&apos;ont permis de renforcer mes compétences en
+              composants réutilisables, débogage, intégration d&apos;interfaces et
+              travail collaboratif avec Git.
             </p>
           </div>
 

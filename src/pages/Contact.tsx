@@ -168,7 +168,7 @@ const ContactForm = () => {
     if (!executeRecaptcha) {
       showAlert({
         show: true,
-        text: "reCAPTCHA is not ready. Please try again.",
+        text: "reCAPTCHA n’est pas prêt. Veuillez réessayer.",
         type: "danger",
       });
       return;
@@ -203,7 +203,7 @@ const ContactForm = () => {
       if (!response.ok) {
         showAlert({
           show: true,
-          text: data?.error ?? "I didn't receive your message",
+          text: data?.error ?? "Votre message n’a pas pu être envoyé.",
           type: "danger",
         });
         return;
@@ -212,7 +212,7 @@ const ContactForm = () => {
       // show success message
       showAlert({
         show: true,
-        text: "Message sent successfully!",
+        text: "Message envoyé avec succès !",
         type: "success",
       });
       setForm({ name: "", email: "", message: "" });
@@ -225,7 +225,7 @@ const ContactForm = () => {
       console.log("Contact_email: ", error);
       showAlert({
         show: true,
-        text: "I didn't receive your message",
+        text: "Votre message n’a pas pu être envoyé.",
         type: "danger",
       });
     } finally {
@@ -242,7 +242,7 @@ const ContactForm = () => {
       {/* get in touch */}
       <div className="flex-1 min-w-[50%] flex flex-col">
         {/* head text */}
-        <h1 className="head-text">Get in Touch</h1>
+        <h1 className="head-text">Me contacter</h1>
 
         {/* contact form */}
         <form
@@ -252,14 +252,14 @@ const ContactForm = () => {
         >
           {/* name */}
           <label className="text-black-500 font-semibold" htmlFor="name">
-            Name
+            Nom
             <input
               type="text"
               id="name"
               name="name"
               className="input disabled:cursor-not-allowed"
-              placeholder="John Doe"
-              title="Name"
+              placeholder="Votre nom"
+              title="Nom"
               value={form.name}
               onChange={handleChange}
               onFocus={handleFocus}
@@ -275,7 +275,7 @@ const ContactForm = () => {
               }`}
               id="name-error"
             >
-              Invalid Name
+              Nom invalide
             </span>
           </label>
 
@@ -289,7 +289,7 @@ const ContactForm = () => {
               className="input disabled:cursor-not-allowed"
               placeholder="johndoe@email.com"
               value={form.email}
-              title="Email"
+              title="E-mail"
               onChange={handleChange}
               onFocus={handleFocus}
               onBlur={handleBlur}
@@ -304,20 +304,20 @@ const ContactForm = () => {
               }`}
               id="email-error"
             >
-              Invalid E-mail
+              E-mail invalide
             </span>
           </label>
 
           {/* message */}
           <label className="text-black-500 font-semibold" htmlFor="message">
-            Your Message
+            Votre message
             <textarea
               ref={messageRef}
               id="message"
               name="message"
               className="textarea disabled:cursor-not-allowed"
               rows={4}
-              placeholder="Let me know how I can help you!"
+              placeholder="Expliquez-moi votre projet."
               value={form.message}
               title="Message"
               onChange={handleChange}
@@ -334,7 +334,7 @@ const ContactForm = () => {
               }`}
               id="message-error"
             >
-              Invalid Message
+              Message invalide
             </span>
           </label>
 
@@ -342,15 +342,15 @@ const ContactForm = () => {
           <button
             type="submit"
             disabled={isLoading}
-            title={isLoading ? "Sending..." : "Send Message"}
+            title={isLoading ? "Envoi en cours..." : "Envoyer le message"}
             className="btn"
             onFocus={handleFocus}
             onBlur={handleBlur}
           >
-            {isLoading ? "Sending..." : "Send Message"}
+            {isLoading ? "Envoi en cours..." : "Envoyer le message"}
           </button>
           <p className="mt-3 text-xs text-black-500/60">
-            This site is protected by reCAPTCHA.
+            Ce site est protégé par reCAPTCHA.
           </p>
         </form>
       </div>
@@ -367,7 +367,7 @@ const Contact = () => {
   return (
     <>
       {/* update site title */}
-      <PageTitle title={`${SITE_NAME} | Contact Me`} />
+      <PageTitle title={`${SITE_NAME} | Contact`} />
 
       {siteKey ? (
         <GoogleReCaptchaProvider reCaptchaKey={siteKey}>
@@ -376,9 +376,9 @@ const Contact = () => {
       ) : (
         <section className="relative flex lg:flex-row flex-col max-container lg:h-screen">
           <div className="flex-1 min-w-[50%] flex flex-col">
-            <h1 className="head-text">Get in Touch</h1>
+            <h1 className="head-text">Me contacter</h1>
             <p className="mt-14 text-black-500">
-              Contact form is currently unavailable.
+              Le formulaire de contact est actuellement indisponible.
             </p>
           </div>
           <FoxCanvas currentAnimation="idle" />

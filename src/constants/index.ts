@@ -1,12 +1,8 @@
 // contains all constants to be used throughout the project
 // dont' remove anything from here if not sure
 
-import { meta, shopify, starbucks, tesla } from "../assets/images";
 import {
-  car,
   css,
-  estate,
-  express,
   git,
   github,
   html,
@@ -17,13 +13,7 @@ import {
   nextjs,
   nodejs,
   react,
-  redux,
-  sass,
-  summiz,
   tailwindcss,
-  threads,
-  youtube,
-  snappy,
   typescript,
 } from "../assets/icons";
 
@@ -38,7 +28,9 @@ export type SkillType =
   | "Version Control"
   | "Database"
   | "Animation"
-  | "State Management";
+  | "State Management"
+  | "Mobile"
+  | "Tooling";
 
 export type Skill = {
   imageUrl: string;
@@ -64,18 +56,18 @@ export type Project = {
   theme: string;
   name: string;
   description: string;
-  link: string;
+  link?: string;
 };
 
 // sidebar links
 export const SIDEBAR_LINKS: SidebarLink[] = [
   {
     route: "/about",
-    label: "About",
+    label: "À propos",
   },
   {
     route: "/projects",
-    label: "Projects",
+    label: "Projets",
   },
   {
     route: "/contact",
@@ -87,13 +79,13 @@ export const SIDEBAR_LINKS: SidebarLink[] = [
 export const SKILLS: Skill[] = [
   {
     imageUrl: css,
-    name: "CSS",
+    name: "CSS3",
     type: "Frontend",
   },
   {
-    imageUrl: express,
-    name: "Express",
-    type: "Backend",
+    imageUrl: react,
+    name: "React.js",
+    type: "Frontend",
   },
   {
     imageUrl: git,
@@ -107,7 +99,7 @@ export const SKILLS: Skill[] = [
   },
   {
     imageUrl: html,
-    name: "HTML",
+    name: "HTML5",
     type: "Frontend",
   },
   {
@@ -116,14 +108,24 @@ export const SKILLS: Skill[] = [
     type: "Frontend",
   },
   {
-    imageUrl: mongodb,
-    name: "MongoDB",
-    type: "Database",
+    imageUrl: javascript,
+    name: "AngularJS",
+    type: "Frontend",
   },
   {
     imageUrl: motion,
-    name: "Motion",
+    name: "Three.js",
     type: "Animation",
+  },
+  {
+    imageUrl: motion,
+    name: "Vite",
+    type: "Tooling",
+  },
+  {
+    imageUrl: mongodb,
+    name: "Supabase",
+    type: "Database",
   },
   {
     imageUrl: mui,
@@ -142,18 +144,18 @@ export const SKILLS: Skill[] = [
   },
   {
     imageUrl: react,
-    name: "React",
-    type: "Frontend",
+    name: "Flutter & Dart",
+    type: "Mobile",
   },
   {
-    imageUrl: redux,
-    name: "Redux",
-    type: "State Management",
+    imageUrl: nodejs,
+    name: "API REST & Node.js",
+    type: "Backend",
   },
   {
-    imageUrl: sass,
-    name: "Sass",
-    type: "Frontend",
+    imageUrl: mongodb,
+    name: "PostgreSQL",
+    type: "Database",
   },
   {
     imageUrl: tailwindcss,
@@ -178,55 +180,27 @@ export const EXTRA_LINKS: ExtraLinks = {
 // experiences
 export const EXPERIENCES: Experience[] = [
   {
-    title: "React.js Developer",
-    company_name: "Starbucks",
-    icon: starbucks,
+    title: "Développeur Front-End Flutter",
+    company_name: "OUFAREZ",
+    icon: react,
     iconBg: "#accbe1",
-    date: "March 2020 - April 2021",
+    date: "Jan. 2026 – Mars 2026",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Conception et intégration d’interfaces front-end ainsi que de composants UI réutilisables durant un contrat de trois mois.",
+      "Traduction des besoins fonctionnels en écrans, interactions et parcours utilisateur avec l’équipe technique.",
+      "Diagnostic et correction de problèmes d’interface pour améliorer la cohérence visuelle, l’ergonomie et la qualité du produit.",
     ],
   },
   {
-    title: "React Native Developer",
-    company_name: "Tesla",
-    icon: tesla,
+    title: "Stagiaire Développeur Mobile Front-End",
+    company_name: "ARITED",
+    icon: typescript,
     iconBg: "#fbc3bc",
-    date: "Jan 2021 - Feb 2022",
+    date: "Juin 2025 – Sept. 2025",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "Web Developer",
-    company_name: "Shopify",
-    icon: shopify,
-    iconBg: "#b7e4c7",
-    date: "Jan 2022 - Jan 2023",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "Full stack Developer",
-    company_name: "Meta",
-    icon: meta,
-    iconBg: "#a2d2ff",
-    date: "Jan 2023 - Present",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Développement de composants d’interface réutilisables et participation à leur intégration dans les fonctionnalités de l’application.",
+      "Correction de problèmes UI et contribution aux améliorations fonctionnelles via un workflow collaboratif basé sur Git.",
+      "Renforcement de l’expérience en architecture de composants, débogage et itération rapide sur les interfaces utilisateur.",
     ],
   },
 ];
@@ -234,51 +208,65 @@ export const EXPERIENCES: Experience[] = [
 // projects
 export const PROJECTS: Project[] = [
   {
-    iconUrl: youtube,
+    iconUrl: nextjs,
     theme: "btn-back-red",
-    name: "Modern UI/UX YouTube Clone",
+    name: "Kouture & Maestro",
     description:
-      "Explore my React.js-based YouTube clone, powered by Rapid API. Seamlessly navigate, search, and enjoy dynamic video content with a sleek and intuitive design.",
-    link: "http://yt-youtube.netlify.app/",
+      "Plateforme SaaS pour couturiers avec une application mobile de gestion en Flutter/BLoC et une marketplace web en Next.js, reliées à Supabase pour l’authentification, les données, le temps réel et le stockage.",
+    link: "https://github.com/tedyclivel/KoutureMaestro",
   },
   {
-    iconUrl: threads,
+    iconUrl: react,
     theme: "btn-back-green",
-    name: "Full Stack Threads Clone",
+    name: "Blog Front-End dynamique",
     description:
-      'Created a full-stack replica of the popular discussion platform "Threads," enabling users to post and engage in threaded conversations.',
-    link: "https://threaad.vercel.app/",
+      "Interface de blog développée avec React.js, Vite et JavaScript, incluant navigation dynamique, recherche, tri, commentaires et validation des formulaires.",
+    link: "https://github.com/tedyclivel/blog",
   },
   {
-    iconUrl: car,
+    iconUrl: motion,
     theme: "btn-back-blue",
-    name: "Car Finding App",
+    name: "Landing Page SSR & Expérience 3D",
     description:
-      "Designed and built a mobile app for finding and comparing cars on the market, streamlining the car-buying process.",
-    link: "https://carhb.vercel.app/",
+      "Landing page produit avec Next.js, Three.js et TypeScript : rendu côté serveur, animations 3D, métadonnées SEO, sitemap et optimisation des performances.",
   },
   {
-    iconUrl: snappy,
+    iconUrl: javascript,
     theme: "btn-back-pink",
-    name: "Online Chat Application",
+    name: "Dashboard de données",
     description:
-      "Experience my chat app, built on React.js, Socket.io, and MongoDB. Enjoy seamless communication with a sleek design for an intuitive and engaging messaging experience.",
-    link: "https://snappy-chatapp.netlify.app/",
+      "Tableau de bord responsive avec AngularJS, JavaScript et API REST pour récupérer, filtrer et afficher des données dynamiques avec gestion des états de chargement et des erreurs.",
+    link: "https://github.com/tedyclivel/admin-dashbord",
   },
   {
-    iconUrl: estate,
-    theme: "btn-back-black",
-    name: "Real-Estate Application",
-    description:
-      "Developed a web application for real estate listings, facilitating property searches and connecting buyers with sellers.",
-    link: "https://real-estate-app-react.vercel.app/",
-  },
-  {
-    iconUrl: summiz,
+    iconUrl: react,
     theme: "btn-back-yellow",
-    name: "AI Summarizer Application",
+    name: "EduTrust",
     description:
-      "App that leverages AI to automatically generate concise & informative summaries from lengthy text content, or blogs.",
-    link: "https://summise.netlify.app/",
+      "Contribution aux interfaces mobile et web d’une plateforme universitaire de paiement avec React Native, Expo et React.js, couvrant les frais de scolarité, les reçus et l’historique des transactions.",
+  },
+  {
+    iconUrl: react,
+    theme: "btn-back-green",
+    name: "TchopTime",
+    description:
+      "Application mobile de gestion de cuisine familiale avec React Native : planification des repas, organisation des menus et génération de listes de courses.",
+    link: "https://github.com/tedyclivel/tchoptime-3",
+  },
+  {
+    iconUrl: motion,
+    theme: "btn-back-blue",
+    name: "LexiFlow",
+    description:
+      "Jeu mobile de mots croisés développé avec Flutter, avec interfaces de jeu, interactions liées aux grilles et un mode Duel pour affronter ses amis.",
+    link: "https://github.com/tedyclivel/LexiFlow",
+  },
+  {
+    iconUrl: typescript,
+    theme: "btn-back-red",
+    name: "Iron Mind",
+    description:
+      "Application mobile d’apprentissage développée avec Flutter pour créer et gérer des parcours personnalisés, avec suivi de progression et objectifs d’apprentissage.",
+    link: "https://github.com/tedyclivel/roamap_cyber_security",
   },
 ];

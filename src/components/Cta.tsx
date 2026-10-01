@@ -6,12 +6,12 @@ const Cta = () => {
     <section className="cta">
       {/* contact text */}
       <p className="cta-text">
-        Have a project in mind? <br className="sm:block hidden" /> Let&apos;s
-        build something together!
+        Vous avez un projet en tête ? <br className="sm:block hidden" />
+        Construisons-le ensemble !
       </p>
 
       {/* contact btn */}
-      <Link to="/contact" className="btn" title="Contact Me">
+      <Link to="/contact" className="btn" title="Me contacter">
         Contact
       </Link>
     </section>

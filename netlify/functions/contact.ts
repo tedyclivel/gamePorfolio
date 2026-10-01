@@ -43,11 +43,11 @@ const verifyRecaptcha = async (
 ): Promise<{ ok: true } | { ok: false; status: number; error: string }> => {
   const secret = process.env.RECAPTCHA_SECRET_KEY;
   if (!secret) {
-    console.error("RECAPTCHA_SECRET_KEY is not set.");
+    console.error("RECAPTCHA_SECRET_KEY n’est pas défini.");
     return {
       ok: false,
       status: 500,
-      error: "Server configuration error.",
+      error: "Erreur de configuration du serveur.",
     };
   }
 
@@ -74,11 +74,11 @@ const verifyRecaptcha = async (
     );
     data = (await response.json()) as RecaptchaVerifyResponse;
   } catch (error) {
-    console.error("reCAPTCHA verification request failed:", error);
+    console.error("La vérification reCAPTCHA a échoué :", error);
     return {
       ok: false,
       status: 502,
-      error: "Unable to verify reCAPTCHA. Please try again.",
+      error: "Impossible de vérifier reCAPTCHA. Veuillez réessayer.",
     };
   }
 
@@ -91,7 +91,7 @@ const verifyRecaptcha = async (
     Number.isNaN(minScore) ||
     score < minScore
   ) {
-    console.error("reCAPTCHA verification failed:", {
+    console.error("La vérification reCAPTCHA a échoué :", {
       success: data.success,
       action: data.action,
       errorCodes: data["error-codes"],
@@ -99,7 +99,7 @@ const verifyRecaptcha = async (
     return {
       ok: false,
       status: 403,
-      error: "reCAPTCHA verification failed. Please try again.",
+      error: "La vérification reCAPTCHA a échoué. Veuillez réessayer.",
     };
   }
 
@@ -111,7 +111,7 @@ export default async (request: Request) => {
   try {
     payload = (await request.json()) as ContactRequestBody;
   } catch {
-    return json({ error: "Invalid request." }, 400);
+    return json({ error: "Requête invalide." }, 400);
   }
 
   const name = typeof payload.name === "string" ? payload.name : "";
@@ -121,7 +121,7 @@ export default async (request: Request) => {
     typeof payload.recaptchaToken === "string" ? payload.recaptchaToken : "";
 
   if (!recaptchaToken) {
-    return json({ error: "reCAPTCHA token is missing." }, 400);
+    return json({ error: "Le jeton reCAPTCHA est manquant." }, 400);
   }
 
   const validationError = validateContactForm({ name, email, message });
@@ -155,8 +155,8 @@ export default async (request: Request) => {
     !adminEmail ||
     !siteUrl
   ) {
-    console.error("Missing Resend environment variables.");
-    return json({ error: "Server configuration error." }, 500);
+    console.error("Variables d’environnement Resend manquantes.");
+    return json({ error: "Erreur de configuration du serveur." }, 500);
   }
 
   const trimmedName = name.trim();
@@ -196,16 +196,16 @@ export default async (request: Request) => {
     ]);
 
     if (error) {
-      console.error("Resend batch send failed:", error);
+      console.error("L’envoi groupé Resend a échoué :", error);
       return json(
-        { error: "Failed to send message. Please try again." },
+        { error: "Échec de l’envoi du message. Veuillez réessayer." },
         502,
       );
     }
   } catch (error) {
-    console.error("Unexpected error while sending email:", error);
+    console.error("Erreur inattendue lors de l’envoi de l’e-mail :", error);
     return json(
-      { error: "Failed to send message. Please try again." },
+      { error: "Échec de l’envoi du message. Veuillez réessayer." },
       500,
     );
   }

@@ -39,7 +39,7 @@ const Navbar = () => {
           to={EXTRA_LINKS.source_code}
           target="_blank"
           rel="noreferrer noopener"
-          title="Source Code"
+          title="Code source"
         >
           <img src={github} alt="Github" className="w-5 h-5 object-contain" />
         </NavLink>

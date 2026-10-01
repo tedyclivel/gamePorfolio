@@ -22,7 +22,7 @@ const Alert = ({ type, text }: AlertProps) => {
             type === "danger" ? "bg-red-500" : "bg-blue-500"
           } flex rounded-full uppercase px-2 py-1 font-semibold mr-3 text-xs`}
         >
-          {type === "danger" ? "Failed" : "Success"}
+          {type === "danger" ? "Échec" : "Succès"}
         </p>
 
         {/* alert text */}
