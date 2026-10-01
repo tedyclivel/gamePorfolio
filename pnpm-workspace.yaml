@@ -1,3 +1,6 @@
+packages:
+  - '.'
+
 allowBuilds:
   esbuild: false
   react-vertical-timeline-component: false
