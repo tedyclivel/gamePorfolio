@@ -2,6 +2,7 @@
   "name": "3d_portfolio",
   "private": true,
   "version": "1.0.1",
+  "packageManager": "pnpm@10.11.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
