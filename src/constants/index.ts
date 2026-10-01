@@ -229,6 +229,7 @@ export const PROJECTS: Project[] = [
     name: "Landing Page SSR & Expérience 3D",
     description:
       "Landing page produit avec Next.js, Three.js et TypeScript : rendu côté serveur, animations 3D, métadonnées SEO, sitemap et optimisation des performances.",
+    link: "https://github.com/tedyclivel/LandingGame.git",
   },
   {
     iconUrl: javascript,
