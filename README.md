@@ -12,18 +12,18 @@ Le site présente les compétences, l’expérience, les projets et un formulair
 - Vite
 - Three.js et React Three Fiber
 - Tailwind CSS
-- Netlify Functions
+- Cloudflare Workers
 - Resend et Google reCAPTCHA v3 pour le formulaire de contact
 
 ## Démarrage
 
-Prérequis : Node.js et npm.
+Prérequis : Node.js et pnpm 10.11.1.
 
 ```bash
 git clone http://github.com/tedyclivel/gamePorfolio.git
 cd gamePorfolio
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 L’application est alors disponible à l’adresse indiquée par Vite.
@@ -49,11 +49,24 @@ RECAPTCHA_MIN_SCORE="0.5"
 ## Commandes
 
 ```bash
-npm run dev
-npm run typecheck
-npm run build
-npm run preview
+pnpm run dev
+pnpm run typecheck
+pnpm run build
+pnpm run preview
+pnpm run deploy
 ```
+
+## Déploiement Cloudflare
+
+Le site et l’API de contact sont déployés par le même Worker. Configurez les
+secrets suivants dans Cloudflare Workers & Pages avant le premier déploiement :
+`RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `CONTACT_TO_EMAIL`,
+`CONTACT_SITE_URL`, `RESEND_TEMPLATE_CONTACT_USER`,
+`RESEND_TEMPLATE_CONTACT_ADMIN`, et `RECAPTCHA_SECRET_KEY`.
+
+Ajoutez `RECAPTCHA_MIN_SCORE` comme variable texte (la valeur recommandée est
+`0.5`). La variable publique `VITE_RECAPTCHA_SITE_KEY` doit être définie lors
+de la compilation.
 
 ## GitHub
 
