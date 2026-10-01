@@ -9,11 +9,11 @@ type Env = {
   CONTACT_TO_EMAIL?: string;
   CONTACT_SITE_URL?: string;
   RECAPTCHA_MIN_SCORE?: string;
-  RECAPTCHA_SECRET_KEY: string;
-  RESEND_API_KEY: string;
-  RESEND_FROM_EMAIL: string;
-  RESEND_TEMPLATE_CONTACT_ADMIN: string;
-  RESEND_TEMPLATE_CONTACT_USER: string;
+  RECAPTCHA_SECRET_KEY?: string;
+  RESEND_API_KEY?: string;
+  RESEND_FROM_EMAIL?: string;
+  RESEND_TEMPLATE_CONTACT_ADMIN?: string;
+  RESEND_TEMPLATE_CONTACT_USER?: string;
 };
 
 type ContactRequestBody = {
@@ -96,6 +96,21 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
     return json({ error: "Méthode non autorisée." }, 405);
   }
 
+  const adminEmail = env.CONTACT_TO_EMAIL || CONTACT_EMAIL_FALLBACK;
+  if (
+    !env.RECAPTCHA_SECRET_KEY ||
+    !env.RESEND_API_KEY ||
+    !env.RESEND_FROM_EMAIL ||
+    !env.RESEND_TEMPLATE_CONTACT_USER ||
+    !env.RESEND_TEMPLATE_CONTACT_ADMIN ||
+    !adminEmail
+  ) {
+    return json(
+      { error: "Le formulaire de contact n’est pas encore configuré." },
+      503,
+    );
+  }
+
   let payload: ContactRequestBody;
   try {
     payload = (await request.json()) as ContactRequestBody;
@@ -119,19 +134,7 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
     return json({ error: recaptchaResult.error }, recaptchaResult.status);
   }
 
-  const adminEmail = env.CONTACT_TO_EMAIL || CONTACT_EMAIL_FALLBACK;
-  const siteUrl = (env.CONTACT_SITE_URL || "").replace(/\/$/, "");
-  if (
-    !env.RESEND_API_KEY ||
-    !env.RESEND_FROM_EMAIL ||
-    !env.RESEND_TEMPLATE_CONTACT_USER ||
-    !env.RESEND_TEMPLATE_CONTACT_ADMIN ||
-    !adminEmail ||
-    !siteUrl
-  ) {
-    console.error("Variables d’environnement Resend manquantes.");
-    return json({ error: "Erreur de configuration du serveur." }, 500);
-  }
+  const siteUrl = (env.CONTACT_SITE_URL || new URL(request.url).origin).replace(/\/$/, "");
 
   const trimmedName = name.trim();
   const trimmedEmail = email.trim();

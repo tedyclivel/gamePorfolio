@@ -28,9 +28,12 @@ pnpm run dev
 
 L’application est alors disponible à l’adresse indiquée par Vite.
 
-## Configuration du formulaire de contact
+## Formulaire de contact (facultatif)
 
-Créez un fichier `.env` à la racine du projet :
+Le site se déploie sans aucune clé. Sans configuration, la page Contact reste
+accessible mais le formulaire indique qu’il est indisponible. Pour activer
+l’envoi de messages, renseignez les valeurs correspondantes dans les secrets
+et variables du Worker Cloudflare :
 
 ```env
 RESEND_API_KEY="re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -44,7 +47,10 @@ RECAPTCHA_SECRET_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 RECAPTCHA_MIN_SCORE="0.5"
 ```
 
-`CONTACT_TO_EMAIL` est obligatoire : il définit la boîte qui reçoit les messages envoyés depuis le site.
+`VITE_RECAPTCHA_SITE_KEY` est une variable de compilation publique. Les autres
+valeurs sont des secrets ou variables d’exécution du Worker. `CONTACT_SITE_URL`
+est facultatif : le Worker utilise automatiquement l’origine de la requête si
+elle n’est pas défini.
 
 ## Commandes
 
@@ -58,15 +64,21 @@ pnpm run deploy
 
 ## Déploiement Cloudflare
 
-Le site et l’API de contact sont déployés par le même Worker. Configurez les
-secrets suivants dans Cloudflare Workers & Pages avant le premier déploiement :
+Le site et l’API de contact sont déployés par le même Worker :
+
+```bash
+pnpm run deploy
+```
+
+La configuration du formulaire est facultative pour le déploiement. Pour
+activer le formulaire après publication, ajoutez ces secrets au Worker :
 `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `CONTACT_TO_EMAIL`,
 `CONTACT_SITE_URL`, `RESEND_TEMPLATE_CONTACT_USER`,
-`RESEND_TEMPLATE_CONTACT_ADMIN`, et `RECAPTCHA_SECRET_KEY`.
+`RESEND_TEMPLATE_CONTACT_ADMIN` et `RECAPTCHA_SECRET_KEY`.
 
-Ajoutez `RECAPTCHA_MIN_SCORE` comme variable texte (la valeur recommandée est
-`0.5`). La variable publique `VITE_RECAPTCHA_SITE_KEY` doit être définie lors
-de la compilation.
+`CONTACT_SITE_URL` est facultatif. Pour activer le formulaire côté client,
+définissez aussi `VITE_RECAPTCHA_SITE_KEY` dans l’environnement de compilation.
+`RECAPTCHA_MIN_SCORE` vaut `0.5` par défaut.
 
 ## GitHub
 
